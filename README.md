@@ -40,7 +40,37 @@ Dump Lib libil2cpp.so from Memory of Game Process and Generate structure dump.cs
 	   -o --output <outputPath>              File Output path
 	   -h --help                             Display this information
 	```
+	```
+	$ adb root # might be required
+	$ adb push IL2CPPDumper /data/local/tmp/
+	adb push F:\git\IL2CPPSODumper\libs\armeabi-v7a\il2cppdumper /data/local/tmp/
+	$ adb shell "chmod 755 /data/local/tmp/IL2CPPDumper"
+	adb shell
+	su
+	chmod 755 /data/local/tmp/IL2CPPDumper
+	/data/local/tmp/IL2CPPDumper -l -p com.digitalsky.girlsfrontline.cn.bili -o /sdcard
+	/data/local/tmp/IL2CPPDumper -l -r -p com.sunborn.neuralcloud.cn.bilibili -o /sdcard
 	
+	adb pull /sdcard/libil2cpp.so
+	
+	/data/local/tmp/IL2CPPDumper  -l -p com.bilibili.zzzj.bili  -r -o /sdcard
+	/data/local/tmp/IL2CPPDumper  -l -p com.sunborn.neuralcloud.cn.bilibili  -o /sdcard
+	```
+	frida
+	```
+	adb push F:\git\IL2CPPSODumper\libs\armeabi-v7a\frida-server-15.1.3-android-arm /data/local/tmp/
+	
+		adb shell
+	su
+	chmod 755 /data/local/tmp/frida-server-15.1.3-android-arm
+	
+	
+	adb push F:\git\IL2CPPSODumper\libs\armeabi-v7a\frida-server-15.1.3-android-arm /data/local/tmp/
+	adb shell
+	su
+	chmod 755 /data/local/tmp/frida-server-15.1.3-android-arm
+	/data/local/tmp/frida-server-15.1.3-android-arm &
+	```
 ## How to Build
 - Clone this repo
 - Install Android NDK, if not already.

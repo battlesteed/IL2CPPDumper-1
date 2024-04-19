@@ -1,4 +1,4 @@
-## IL2CPPDumper
+il2cppdumper## IL2CPPDumper
 Dump Lib libil2cpp.so from Memory of Game Process and Generate structure dump.cs
 
 ## Features
@@ -44,14 +44,26 @@ Dump Lib libil2cpp.so from Memory of Game Process and Generate structure dump.cs
 	$ adb root # might be required
 	$ adb push IL2CPPDumper /data/local/tmp/
 	adb push F:\git\IL2CPPSODumper\libs\armeabi-v7a\il2cppdumper /data/local/tmp/
+	adb push F:\git\IL2CPPSODumper\libs\arm64-v8a\il2cppdumper /data/local/tmp/
+	adb -s 127.0.0.1:5555 push F:\git\IL2CPPSODumper\libs\armeabi-v7a\il2cppdumper /data/local/tmp/
 	$ adb shell "chmod 755 /data/local/tmp/IL2CPPDumper"
 	adb shell
 	su
-	chmod 755 /data/local/tmp/IL2CPPDumper
-	/data/local/tmp/IL2CPPDumper -l -p com.digitalsky.girlsfrontline.cn.bili -o /sdcard
+	chmod 755 /data/local/tmp/il2cppdumper
+	/data/local/tmp/il2cppdumper -l -p com.hypergryph.arknights.forminor -o /storage/emulated/0/
+	/data/local/tmp/il2cppdumper -l -r -p com.bfire.da.nuj -o /storage/emulated/0/
 	/data/local/tmp/IL2CPPDumper -l -r -p com.sunborn.neuralcloud.cn.bilibili -o /sdcard
+	/data/local/tmp/il2cppdumper -l -r -p com.komoe.kmumamusumegp
+	/data/local/tmp/il2cppdumper -l -r -p com.bilibili.priconne2
+	/data/local/tmp/il2cppdumper -l -r -p com.sunborn.neuralcloud.cn
+	/data/local/tmp/il2cppdumper -l -r -p com.komoe.kmumamusumegp 赛马娘,台服
+	/data/local/tmp/il2cppdumper -l -r -p com.kurogame.haru.hero 战双
+	adb  pull /sdcard/libil2cpp.so
+	adb -s 127.0.0.1:5555  pull /sdcard/libil2cpp.so
+	 L:\leidian\LDPlayer64\adb.exe -s 127.0.0.1:5555 push libunityLive2d /data/local/tmp/
+	 L:\leidian\LDPlayer64\adb.exe -s 127.0.0.1:5555 push F:\git\tecFramework\TecFramework\newHook\libs\armeabi-v7a\libunityLive2d.so /data/local/tmp/
+	chmod 755 /data/local/tmp/libunityLive2d.so
 	
-	adb pull /sdcard/libil2cpp.so
 	
 	/data/local/tmp/IL2CPPDumper  -l -p com.bilibili.zzzj.bili  -r -o /sdcard
 	/data/local/tmp/IL2CPPDumper  -l -p com.sunborn.neuralcloud.cn.bilibili  -o /sdcard

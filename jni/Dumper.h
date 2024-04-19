@@ -118,7 +118,7 @@ namespace Dumper {
             return "";
         string ret("<");
         vector<string> typeNames;
-        kaddr type_argvArr = getPtr((kaddr) genericInst->type_argv);
+        kaddr type_argvArr = getPtr((intptr_t) genericInst->type_argv);
         for (uint i = 0; i < genericInst->type_argc; ++i) {
             const Il2CppType* oriType = ReadPtr<Il2CppType>(type_argvArr + (i * sizeof(kaddr)));
             typeNames.push_back(GetIl2CppTypeName(oriType));
@@ -175,6 +175,10 @@ namespace Dumper {
 
     string GetIl2CppTypeName(const Il2CppType *type) {
         //printf("GetIl2CppTypeName\n");
+	#if defined(__arm64__) || defined(__aarch64__)
+    	return NULL;
+	#endif
+	#if defined(__arm__)
         string ret;
         switch (type->type) {
             case IL2CPP_TYPE_CLASS:
@@ -212,6 +216,7 @@ namespace Dumper {
                 break;
         }
         return ret;
+	#endif
     }
 
     void dump_class(const char* imgName, TypeDefinitionIndex index){

@@ -17,27 +17,27 @@ namespace MetaData {
     const Il2CppType* GetIl2CppType(TypeIndex index){
 		//printf("TypeIndex: %d\n", index);
         if (index >= s_MetadataRegistration.typesCount) {return nullptr;}
-		kaddr typePtr = getPtr(((kaddr) s_MetadataRegistration.types) + (index * sizeof(kaddr)));
+		intptr_t typePtr = getPtr(((intptr_t) s_MetadataRegistration.types) + (index * sizeof(kaddr)));
         return ReadPtr<Il2CppType>(typePtr);
     }
 
     int32_t GetFieldOffset(TypeIndex typeIndex, int32_t fieldIndexInType) {
 		//printf("FieldOffset: TypeIndex(%d) , FType(%d)\n", typeIndex, fieldIndexInType);
         if (typeIndex > s_MetadataRegistration.typeDefinitionsSizesCount || fieldIndexInType > s_MetadataRegistration.fieldOffsetsCount) {return 0;}
-		kaddr OffsetArr = getPtr(((kaddr) s_MetadataRegistration.fieldOffsets) + (typeIndex * sizeof(TypeIndex)));
+        intptr_t OffsetArr = getPtr(((intptr_t) s_MetadataRegistration.fieldOffsets) + (typeIndex * sizeof(TypeIndex)));
 		return Read<int>(OffsetArr + (fieldIndexInType * sizeof(int32_t)));
     }
 
     kaddr GetMethodPointer(MethodIndex index){
 		//printf("MethodIndex: %d\n", index);
         if (index >= s_CodeRegistration.methodPointersCount) {return 0;}
-        return getPtr(((kaddr) s_CodeRegistration.methodPointers) + (index * sizeof(kaddr)));
+        return getPtr(((intptr_t) s_CodeRegistration.methodPointers) + (index * sizeof(kaddr)));
     }
 
     kaddr GetMetadataUsagePointer(uint32_t index){
         //printf("MetadataUsagePointerIndex: %d\n", index);
         if (index >= s_MetadataRegistration.metadataUsagesCount) {return 0;}
-        return getPtr(((kaddr) s_MetadataRegistration.metadataUsages) + (index * sizeof(kaddr)));
+        return getPtr(((intptr_t) s_MetadataRegistration.metadataUsages) + (index * sizeof(kaddr)));
     }
 
     //-----MetaData Counts-----//

@@ -25,6 +25,7 @@ void Usage() {
     printf(" Options:\n");
     printf("--Lib Args--------------------------------------------------------------\n");
     printf("  -l --lib                              Dump libil2cpp.so from Memory\n");
+    printf("  -d --dumpGlobalMetaData                              Dump GlobalMetaData from Memory\n");
     printf("  -p --package <packageName>            Package Name of Game\n");
     printf("  -r --raw(Optional)                    Output Raw Lib and Not Rebuild It\n");
     printf("  -f --fast(Optional)                   Enable Fast Dumping\n");
